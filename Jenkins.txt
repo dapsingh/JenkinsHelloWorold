@@ -1,0 +1,118 @@
+https://github.com/ricardoandre97/jenkins-resources
+
+https://www.guru99.com/jenkins-github-integration.html
+https://syncsort.udemy.com/course/jenkins-from-zero-to-hero/learn/lecture/13156190#overview
+
+https://syncsort.udemy.com/course/jenkins-course-devops-cicd-complete-reference/learn/lecture/11766112#overview
+
+https://syncsort.udemy.com/course/jenkins-from-zero-to-hero/learn/lecture/12925962#overview
+
+https://syncsort.udemy.com/course/jenkins-course-devops-cicd-complete-reference/learn/lecture/11880882#overview
+
+http://localhost:8080/job/HelloWorld/build?token=test
+
+https://syncsort.udemy.com/course/github-ultimate/
+
+
+192.168.1.2
+
+
+Docker Installation:
+
+Setting Up the Repository:
+1. sudo yum install -y yum-utils
+
+2. sudo yum-config-manager \
+    --add-repo \
+    https://download.docker.com/linux/centos/docker-ce.repo
+
+3. sudo yum install docker-ce docker-ce-cli containerd.io
+
+
+Start the Docker Service:
+sudo systemctl start docker
+
+To enable docker on system Startup:
+
+sudo systemctl enable docker
+
+To check Docker Installation:
+
+docker ps
+
+
+To add user in docker group:
+
+sudo usermod -aG docker copssh
+
+
+
+Docker Compose Installation:
+
+sudo curl -L "https://github.com/docker/compose/releases/download/1.25.5/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+
+To provide permission:
+sudo chmod +x /usr/local/bin/docker-compose
+
+To check docker compose Installation:
+docker-compose
+
+
+To Install Docker Jenkins Image:
+
+docker pull jenkins
+
+
+To check docker images:
+docker images
+
+To get docker loaction:
+docker info | grep -i root
+
+
+Create a Docker Compose File:
+
+Sample is kept in e:\KT\Jenkins Folder.
+
+To set ownership of jenkins_home
+ sudo chown 1000:1000 jenkins_home -R
+
+To Create Jenkins
+docker-compose up -d
+
+docker ps
+
+Show logs:
+docker logs -f jenkins
+
+In logs it will show the password.
+
+To stop docker
+docker ps
+note the container Id
+docker stop "containerid"
+
+or
+
+docker-compose stop
+
+docker-compose start
+
+
+To check any thing installed on Container or to go inside the container:
+
+docker exec -ti jenkins bash
+
+To come out of container user following command:
+exit
+
+To copy a file from system to docker container:
+docker cp script.sh jenkins:/tmp/script.sh
+
+
+docker run -v jenkins --volume /etc/timezone:/etc/timezone:ro
+docker run -v /etc/localtime:/etc/localtime:ro
+
+To install Jenkins from .war file
+Download jenkins.war file from jenkins site
+java -jar jenkins.war
